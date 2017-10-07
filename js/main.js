@@ -19,33 +19,32 @@ var tl = new Vue({
       return date_out;
     },
     sortedItems: function(arr) {
-      out = new Array();
-      console.log(arr);
+      let months = this.months;
+      let years = new Array();
+      //year to Array
       for (let y in arr) {
-        // order months
-        months = Array();
+        // months to array
+        months_order = Array();
         for (var m in arr[y]) {
-          months.push([m, arr[y][m]]);
+          // sorting days - last level
+          arr[y][m].sort(function(a,b) {
+            return a.init_date - b.init_date;
+          });
+          // pushing in array months:days[sorted]
+          months_order.push([m, arr[y][m]]);
         }
-        months.sort(function(a,b) {
-          // console.log(this.months.indexOf(a) + " - " + this.months.indexOf(b));
-          return this.months.indexOf(a)+this.months.indexOf(b);
+        // sorting months
+        months_order.sort(function(a,b) {
+          return months.indexOf(a[0])-months.indexOf(b[0]);
         });
-
-        // order days
-        // arr[y].sort(function(a,b) {
-        //   return a.init_date - b.init_date;
-        // });
-        console.log("-months---");
-        console.log(months);
-        out.push([y, arr[y]]);
+        // pushing in array years:months[sorted]
+        years.push([y, months_order]);
       }
-
-      //order year
-      out.sort(function(a,b){
+      //sorting year
+      years.sort(function(a,b){
         return a[0]-b[0];
       });
-      return arr;
+      return years;
     }
   },
   computed:{

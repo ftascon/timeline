@@ -6,153 +6,34 @@
 	<link rel="stylesheet" type="text/css" href="css/master.css">
 </head>
 <body>
-	<div id="tl">
-		<template v-for="(year, index) in reData">
-			<h1>{{index}}</h1>
-			<template v-for="course in year">
-				<ul>
-					<template v-for="course in year">
-						<li>{{course.init_date_out}}</li>
+	<div id="tl" class="tl_main">
+		<template v-for="year in reData">
+			<h1>{{year[0]}}</h1>
+			<template v-for="month in year[1]">
+				<h2>{{month[0]}}</h2>
+				<ul class="tl_month">
+					<template v-for="course_day in month[1]">
+						<li>
+							<div class="tl_date">
+								<p>{{course_day.init_date_out}}</p>
+							</div>
+							<div class="tl_divider">
+								<span class="tl_punto" v-bind:data-id="course_day.id"></span>
+							</div>
+							<div class="tl_content">
+								<h3>{{course_day.course_name}}</h3>
+								<img alt="image event" v-bind:src="course_day.course_image">
+								<dl>
+									<template v-for="ser in course_day.service">
+										<dd>{{ser}}</dd>
+									</template>
+								</dl>
+							</div>
+						</li>
 					</template>
 				</ul>
 			</template>
 		</template>
-	</div>
-	<div class="tl_main">
-		<h2>Octubre</h2>
-		<ul class="tl_month">
-			<li>
-				<div class="tl_date">
-					<p>01-OCT</p>
-				</div>
-				<div class="tl_divider">
-					<span class="tl_punto"></span>
-				</div>
-				<div class="tl_content">
-					<h3>Lorem Ipsum</h3>
-					<img alt="image event" src="images/main_chart.png" width="100px">
-					<dl>
-						<dd>Sed ut perspiciatis unde omnis iste</dd>
-						<dd>Nemo enim ipsam voluptatem quia voluptas</dd>
-					</dl>
-				</div>
-			</li>
-			<li>
-				<div class="tl_date">
-					<p>01-OCT</p>
-				</div>
-				<div class="tl_divider">
-					<span class="tl_punto"></span>
-				</div>
-				<div class="tl_content">
-					<h3>Lorem Ipsum</h3>
-					<img alt="image event" src="images/main_chart.png" width="100px">
-					<dl>
-						<dd>Sed ut perspiciatis unde omnis iste</dd>
-						<dd>Nemo enim ipsam voluptatem quia voluptas</dd>
-					</dl>
-				</div>
-			</li>
-			<li>
-				<div class="tl_date">
-					<p>01-OCT</p>
-				</div>
-				<div class="tl_divider">
-					<span class="tl_punto"></span>
-				</div>
-				<div class="tl_content">
-					<h3>Lorem Ipsum</h3>
-					<img alt="image event" src="images/main_chart.png" width="100px">
-					<dl>
-						<dd>Sed ut perspiciatis unde omnis iste</dd>
-						<dd>Nemo enim ipsam voluptatem quia voluptas</dd>
-					</dl>
-				</div>
-			</li>
-			<li>
-				<div class="tl_date">
-					<p>01-OCT</p>
-				</div>
-				<div class="tl_divider">
-					<span class="tl_punto"></span>
-				</div>
-				<div class="tl_content">
-					<h3>Lorem Ipsum</h3>
-					<img alt="image event" src="images/main_chart.png" width="100px">
-					<dl>
-						<dd>Sed ut perspiciatis unde omnis iste</dd>
-						<dd>Nemo enim ipsam voluptatem quia voluptas</dd>
-					</dl>
-				</div>
-			</li>
-		</ul>
-		<h2>Noviembre</h2>
-		<ul class="tl_month">
-			<li>
-				<div class="tl_date">
-					<p>01-NOV</p>
-				</div>
-				<div class="tl_divider">
-					<span class="tl_punto"></span>
-				</div>
-				<div class="tl_content">
-					<h3>Lorem Ipsum</h3>
-					<img alt="image event" src="images/main_chart.png" width="100px">
-					<dl>
-						<dd>Sed ut perspiciatis unde omnis iste</dd>
-						<dd>Nemo enim ipsam voluptatem quia voluptas</dd>
-					</dl>
-				</div>
-			</li>
-			<li>
-				<div class="tl_date">
-					<p>01-NOV</p>
-				</div>
-				<div class="tl_divider">
-					<span class="tl_punto"></span>
-				</div>
-				<div class="tl_content">
-					<h3>Lorem Ipsum</h3>
-					<img alt="image event" src="images/main_chart.png" width="100px">
-					<dl>
-						<dd>Sed ut perspiciatis unde omnis iste</dd>
-						<dd>Nemo enim ipsam voluptatem quia voluptas</dd>
-					</dl>
-				</div>
-			</li>
-			<li>
-				<div class="tl_date">
-					<p>01-NOV</p>
-				</div>
-				<div class="tl_divider">
-					<span class="tl_punto"></span>
-				</div>
-				<div class="tl_content">
-					<h3>Lorem Ipsum</h3>
-					<img alt="image event" src="images/main_chart.png" width="100px">
-					<dl>
-						<dd>Sed ut perspiciatis unde omnis iste</dd>
-						<dd>Nemo enim ipsam voluptatem quia voluptas</dd>
-					</dl>
-				</div>
-			</li>
-			<li>
-				<div class="tl_date">
-					<p>01-NOV</p>
-				</div>
-				<div class="tl_divider">
-					<span class="tl_punto"></span>
-				</div>
-				<div class="tl_content">
-					<h3>Lorem Ipsum</h3>
-					<img alt="image event" src="images/main_chart.png" width="100px">
-					<dl>
-						<dd>Sed ut perspiciatis unde omnis iste</dd>
-						<dd>Nemo enim ipsam voluptatem quia voluptas</dd>
-					</dl>
-				</div>
-			</li>
-		</ul>
 	</div>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script type="text/javascript" src="js/semantic.min.js"></script>
