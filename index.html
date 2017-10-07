@@ -7,12 +7,15 @@
 </head>
 <body>
 	<div id="tl">
-		<template v-for="year in reData">
-			<ul>
-				<template v-for="course in year">
-					<li>{{course.init_date_out}}</li>
-				</template>
-			</ul>
+		<template v-for="(year, index) in reData">
+			<h1>{{index}}</h1>
+			<template v-for="course in year">
+				<ul>
+					<template v-for="course in year">
+						<li>{{course.init_date_out}}</li>
+					</template>
+				</ul>
+			</template>
 		</template>
 	</div>
 	<div class="tl_main">

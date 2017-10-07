@@ -20,12 +20,28 @@ var tl = new Vue({
     },
     sortedItems: function(arr) {
       out = new Array();
+      console.log(arr);
       for (let y in arr) {
-        arr[y].sort(function(a,b) {
-          return a.init_date - b.init_date;
+        // order months
+        months = Array();
+        for (var m in arr[y]) {
+          months.push([m, arr[y][m]]);
+        }
+        months.sort(function(a,b) {
+          // console.log(this.months.indexOf(a) + " - " + this.months.indexOf(b));
+          return this.months.indexOf(a)+this.months.indexOf(b);
         });
+
+        // order days
+        // arr[y].sort(function(a,b) {
+        //   return a.init_date - b.init_date;
+        // });
+        console.log("-months---");
+        console.log(months);
         out.push([y, arr[y]]);
       }
+
+      //order year
       out.sort(function(a,b){
         return a[0]-b[0];
       });
@@ -42,7 +58,11 @@ var tl = new Vue({
         if(!outData.hasOwnProperty(year)){
           outData[year] = new Array();
         }
-        outData[year].push(c);
+        month = this.getMonth(c.init_date, "large");
+        if(!outData[year].hasOwnProperty(month)){
+          outData[year][month] = new Array();
+        }
+        outData[year][month].push(c);
       }
       outData = this.sortedItems(outData);
       return outData;
