@@ -2,13 +2,19 @@
 <html>
 <head>
 	<title>Timeline</title>
-	<link rel="stylesheet" type="text/css" href="semantic.min.css">
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script type="text/javascript" src="semantic.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/semantic.min.css">
 	<link rel="stylesheet" type="text/css" href="css/master.css">
-
 </head>
 <body>
+	<div id="tl">
+		<template v-for="year in reData">
+			<ul>
+				<template v-for="course in year">
+					<li>{{course.init_date_out}}</li>
+				</template>
+			</ul>
+		</template>
+	</div>
 	<div class="tl_main">
 		<h2>Octubre</h2>
 		<ul class="tl_month">
@@ -145,5 +151,9 @@
 			</li>
 		</ul>
 	</div>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript" src="js/semantic.min.js"></script>
+	<script type="text/javascript" src="js/vue.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>
